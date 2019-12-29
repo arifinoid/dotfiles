@@ -1,14 +1,9 @@
 {
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Plastic",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "git.autofetch": true,
-  "editor.tabSize": 2,
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.fontFamily": "'Fira Code'",
-  "editor.fontLigatures": true,
-  "editor.fontWeight": "400",
-  "editor.fontSize": 13,
-  "window.zoomLevel": 0, // Regular
+  "editor.cursorSmoothCaretAnimation": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
@@ -19,13 +14,49 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
-  "dart.flutterSdkPath": "/Users/arifinoid/flutter/flutter",
-  "terminal.integrated.rendererType": "dom",
-  "terminal.external.osxExec": "Alacritty.app",
+  "files.exclude": {
+    "**/node_modules": false,
+    "**/.next/": true,
+    "**/__snapshots__": true
+  },
+  "search.exclude": {
+    "**/__snapshots__": true
+  },
+  "editor.fontFamily": "'Operator Mono Light Italic', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "comment",
+          "keyword",
+          "constant",
+          "storage.modifier",
+          "storage.type",
+          "variable.parameter"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          "invalid",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
+  "editor.fontSize": 13,
   "terminal.integrated.shell.osx": "/bin/zsh",
-  "quokka.compactMessageOutput": true,
+  "window.zoomLevel": 0,
   "peacock.favoriteColors": [
     {
       "name": "Angular Red",
@@ -79,16 +110,5 @@
       "name": "Vue Green",
       "value": "#42b883"
     }
-  ],
-  "workbench.startupEditor": "newUntitledFile",
-  "liveshare.audio.joinCallBehavior": "accept",
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/.next/": true,
-    "**/__snapshots__": true
-  },
-  "search.exclude": {
-    "**/__snapshots__": true
-  },
-  "liveServer.settings.donotShowInfoMsg": true
+  ]
 }
