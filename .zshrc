@@ -21,12 +21,25 @@ plugins=(
   web-search
   cloudfoundry
   sudo
+  laravel
 )
 
 ZSH_THEME="spaceship"
 
+#psql
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
+
 #flutter
 export PATH=$PATH:$HOME/Documents/flutter/bin
+
+#php
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+
+#python
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
+alias python=/usr/local/bin/python3.7
+alias pip=/usr/local/bin/pip3
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -47,6 +60,11 @@ lfcd () {
     fi
 }
 bindkey -s '^o' 'lfcd\n'
+
+# aliases
+alias matt="echo Hello Matt, may Allah SWT bless you! aamiin.."
+alias gpm="git push origin matt-dev"
+alias update="source ~/.zshrc"
 
 source $ZSH/oh-my-zsh.sh
 source /Users/sicepatmatt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
