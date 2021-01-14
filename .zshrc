@@ -27,7 +27,8 @@ plugins=(
 ZSH_THEME="spaceship"
 
 #psql
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
+#export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin
+export PATH=/usr/local/Cellar/postgresql@9.6/9.6.18_2/bin:$PATH
 
 #flutter
 export PATH=$PATH:$HOME/Documents/flutter/bin
@@ -67,7 +68,7 @@ alias gpm="git push origin matt-dev"
 alias update="source ~/.zshrc"
 
 source $ZSH/oh-my-zsh.sh
-source /Users/sicepatmatt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /Users/arifinoid/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.bash_profile
 
@@ -161,3 +162,7 @@ source ~/.bash_profile
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/arifinoid/.sdkman"
+[[ -s "/Users/arifinoid/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/arifinoid/.sdkman/bin/sdkman-init.sh"
