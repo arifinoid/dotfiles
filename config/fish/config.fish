@@ -55,7 +55,7 @@ if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
 
-starship init fish | source
+# starship init fish | source
 
 fish_add_path /usr/local/sbin
 
