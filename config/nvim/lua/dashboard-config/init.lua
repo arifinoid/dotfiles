@@ -5,7 +5,7 @@ vim.g.dashboard_custom_section = {
   b = {description = {'  Recent Files       '}, command = 'Telescope oldfiles'},
   e = {description = {'  Config             '}, command = 'edit ~/.config/nvim/init.lua'}
 }
-vim.g.dashboard_custom_footer = {'Do one thing, do it well - Unix Philosophy'}
+vim.g.dashboard_custom_footer = {'Talk is cheap. Show me the code. ~ Linus Torvalds'}
 vim.g.dashboard_custom_header = {
       [[     ⠀⠀⠀⠀⠀⠀⠀⡴⠞⠉⢉⣭⣿⣿⠿⣳⣤⠴⠖⠛⣛⣿⣿⡷⠖⣶⣤⡀⠀⠀⠀  ]],
       [[   ⠀⠀⠀⠀⠀⠀⠀⣼⠁⢀⣶⢻⡟⠿⠋⣴⠿⢻⣧⡴⠟⠋⠿⠛⠠⠾⢛⣵⣿⠀⠀⠀⠀  ]],

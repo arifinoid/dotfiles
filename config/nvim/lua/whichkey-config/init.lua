@@ -1,4 +1,12 @@
 local wk = require("which-key")
+wk.setup {
+  plugins = {
+    marks = false,
+    registers = false,
+    spelling = {enabled = false, suggestions = 20},
+    presets = {operators = false, motions = false, text_objects = false, windows = false, nav = false, z = false, g = false}
+  }
+}
 local Terminal = require('toggleterm.terminal').Terminal
 local toggle_float = function()
   local float = Terminal:new({direction = "float"})
@@ -16,6 +24,7 @@ local mappings = {
   E = {":e ~/.config/nvim/init.lua<cr>", "Edit config"},
   f = {":Telescope find_files<cr>", "Telescope Find Files"},
   r = {":Telescope live_grep<cr>", "Telescope Live Grep"},
+  s = {":Telescope grep_string<cr>", "Text under cursor"},
   l = {
     name = "LSP",
     i = {":LspInfo<cr>", "Connected Language Servers"},
