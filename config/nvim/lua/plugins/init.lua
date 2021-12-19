@@ -34,6 +34,7 @@ use {'windwp/nvim-autopairs', config = get_config('autopairs-config'), after = "
 use {'folke/which-key.nvim', event = "BufWinEnter", config = get_config('whichkey-config')}
 use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}, cmd = "Telescope", config = get_config('telescope-config')}
 use {'neovim/nvim-lspconfig', config = get_config('lsp'), after = "nvim-cmp"}
+use {'glepnir/lspsaga.nvim', config = get_config('lspsaga-config'), after = "nvim-cmp"}
 use {
   "hrsh7th/nvim-cmp",
   requires = {
