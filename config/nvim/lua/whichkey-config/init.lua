@@ -37,8 +37,14 @@ local mappings = {
     e = {'<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', "Show line diagnostics"},
     q = {'<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', "Show loclist"}
   },
-  t = {t = {":ToggleTerm<cr>", "Split Below"}, f = {toggle_float, "Floating Terminal"}, l = {toggle_lazygit, "LazyGit"}}
+  t = {t = {":ToggleTerm<cr>", "Split Below"}, f = {toggle_float, "Floating Terminal"}, l = {toggle_lazygit, "LazyGit"}},
+  z = {
+    name = "Focus",
+    z = {":ZenMode<cr>", "Toggle Zen Mode"},
+    t = {":Twilight<cr>", "Toggle Twilight"}
+  }
 }
+
 local opts = {
   prefix = '<leader>'
 }
