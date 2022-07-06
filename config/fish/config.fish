@@ -14,7 +14,7 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
-alias g git
+
 alias ys "yarn start"
 alias yd "yarn dev"
 alias cl clear
@@ -22,21 +22,42 @@ alias vim nvim
 alias tms "tmux source-file ~/.config/.tmux.conf"
 alias tmk "tmux kill-session -a"
 alias ide "tmux split-window -v -p 30;tmux split-window -h -p 66;tmux split-window -h -p 50"
+
 alias yd- "yarn develop --watch-admin"
 alias yb "yarn build"
+alias nvm12 "nvm use 12"
 alias nvm14 "nvm use 14"
 alias nvm16 "nvm use 16"
+alias nvma14 "nvm alias default 12"
 alias nvma14 "nvm alias default 14"
 alias nvma16 "nvm alias default 16"
-alias grm "go run main.go"
-alias gr. "go run ."
-alias gpo "git pull origin"
-alias gpom "git pull origin master"
-alias ps "pipenv shell"
-alias pi "pipenv install"
 alias yof "yarn build && yarn workspace @efishery/onefish-docs dev"
 alias yt "yarn test"
 alias prd "pnpm run dev"
+alias clearnode "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+alias findnode "find . -name 'node_modules' -type d -prune"
+alias fixnodegyp "npm explore npm/node_modules/@npmcli/run-script -g -- npm_config_global=false npm install node-gyp@latest"
+# alias src.env "export $(cat .env | xargs)"
+
+alias g git
+alias grm "go run main.go"
+alias gr. "go run ."
+alias gpo "git pull origin"
+alias gcm "git checkout master"
+alias gc "git checkout"
+alias gr "git restore"
+alias gst "git status"
+alias gsta "git stash"
+alias gstl "git stash list"
+alias gstp "git stash pop"
+alias gf "git fetch"
+alias gpom "git pull origin master"
+alias grv "git remote -v"
+
+alias ps "pipenv shell"
+alias pi "pipenv install"
+
+alias fr "flutter run"
 
 command -qv nvim && alias vim nvim
 
@@ -87,5 +108,7 @@ end
 starship init fish | source
 
 fish_add_path /usr/local/sbin
+set bashrc $HOME/.bashrc
+[ -f "$bashrc" ] && source "$bashrc"
 
 export PATH="/Users/arifinoidefishery/.ebcli-virtual-env/executables:$PATH"

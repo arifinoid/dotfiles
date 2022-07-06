@@ -47,29 +47,31 @@ use {'p00f/nvim-ts-rainbow', after = "nvim-treesitter"}
 use {'windwp/nvim-autopairs', config = get_config('autopairs-config'), after = "nvim-cmp"}
 use {'folke/which-key.nvim', config = get_config('whichkey-config')}
 use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}, cmd = "Telescope", config = get_config('telescope-config')}
-use {'neovim/nvim-lspconfig', config = get_config('lsp'), after = "nvim-cmp"}
-use {'glepnir/lspsaga.nvim', config = get_config('lspsaga-config'), after = "nvim-cmp"}
+use {'neovim/nvim-lspconfig', config = get_config('lsp')}
+use {'glepnir/lspsaga.nvim', config = get_config('lspsaga-config')}
 use {'hrsh7th/cmp-nvim-lsp'}
 use {"hrsh7th/nvim-cmp"}
 use {'hrsh7th/cmp-vsnip'}
+use {'hrsh7th/vim-vsnip-integ'}
 use {'hrsh7th/vim-vsnip'}
 use {'onsails/lspkind-nvim'}
 use {'lukas-reineke/format.nvim', config = get_config('format-config'), cmd = "Format"}
 use {'norcalli/nvim-colorizer.lua', config = get_config('colorizer-config'), event = "BufReadPre"}
+use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}, config = function() require('gitsigns').setup {current_line_blame = true} end }
 use {
-  'lewis6991/gitsigns.nvim',
-  requires = {'nvim-lua/plenary.nvim'},
-  config = function()
-    require('gitsigns').setup {current_line_blame = true}
-  end
+    'goolord/alpha-nvim',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.theta'.config)
+    end
 }
-use {'glepnir/dashboard-nvim', event = "BufRead", config = get_config('dashboard-config')}
-use {"lukas-reineke/indent-blankline.nvim", config = get_config('blankline-config')}
-use {"akinsho/toggleterm.nvim", config = get_config('toggleterm-config')}
+-- use {'glepnir/dashboard-nvim', event = "BufRead", config = get_config('dashboard-config')}
+use {'lukas-reineke/indent-blankline.nvim', config = get_config('blankline-config')}
+use {'akinsho/toggleterm.nvim', config = get_config('toggleterm-config')}
 use {'terrortylor/nvim-comment', config = get_config('comment-config')}
 use {'terryma/vim-multiple-cursors'}
 use {'psliwka/vim-smoothie'}
 use {'williamboman/nvim-lsp-installer'}
 use {'jose-elias-alvarez/null-ls.nvim', config = "require('null-ls-config')"}
-use {"folke/zen-mode.nvim", config = 'require("zen-mode-config")'}
-use {"folke/twilight.nvim", config = "require('twilight-config')"}
+use {'folke/zen-mode.nvim', config = 'require("zen-mode-config")'}
+use {'folke/twilight.nvim', config = "require('twilight-config')"}
+use 'wakatime/vim-wakatime'

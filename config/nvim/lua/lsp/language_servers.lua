@@ -1,16 +1,38 @@
-local lsp_installer = require('nvim-lsp-installer')
+-- local lspconfig = require("lspconfig")
+-- local lsp_installer = require("nvim-lsp-installer")
+-- local function on_attach(client, bufnr)
+--   -- set up buffer keymaps, etc.
+-- end
 
+-- lspconfig.sumneko_lua.setup { on_attach = on_attach }
+-- lspconfig.tsserver.setup { on_attach = on_attach }
+
+-- lsp_installer.setup({
+--   automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+--   ui = {
+--     icons = {
+--       server_installed = "✓",
+--       server_pending = "➜",
+--       server_uninstalled = "✗"
+--     }
+--   }
+-- })
+
+
+
+-- -- #1
+local lsp_installer = require('nvim-lsp-installer')
 lsp_installer.on_server_ready(function(server)
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  local opts = {capabilities = capabilities}
+  local opts = { capabilities = capabilities }
   if server.name == "sumneko_lua" then
     opts = vim.tbl_deep_extend("force", {
       settings = {
         Lua = {
-          runtime = {version = 'LuaJIT', path = vim.split(package.path, ';')},
-          diagnostics = {globals = {'vim'}},
-          workspace = {library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false},
-          telemetry = {enable = false}
+          runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+          diagnostics = { globals = { 'vim' } },
+          workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
+          telemetry = { enable = false }
         }
       }
 
@@ -19,6 +41,8 @@ lsp_installer.on_server_ready(function(server)
   server:setup(opts)
 end)
 
+
+-- #2
 -- -- Setup lspconfig.
 -- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -84,4 +108,3 @@ end)
 --     require'lspconfig'[server].setup {capabilities = capabilities}
 --   end
 -- end
-
