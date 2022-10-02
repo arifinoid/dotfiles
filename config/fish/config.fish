@@ -15,24 +15,25 @@ alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
 
-alias ys "yarn start"
-alias yd "yarn dev"
 alias cl clear
 alias vim nvim
 alias tms "tmux source-file ~/.config/.tmux.conf"
 alias tmk "tmux kill-session -a"
 alias ide "tmux split-window -v -p 30;tmux split-window -h -p 66;tmux split-window -h -p 50"
 
+alias ys "yarn start"
+alias yd "yarn dev"
 alias yd- "yarn develop --watch-admin"
 alias yb "yarn build"
+alias yof "yarn build && yarn workspace @efishery/onefish-docs dev"
+alias yt "yarn test"
+alias yse "yarn server"
 alias nvm12 "nvm use 12"
 alias nvm14 "nvm use 14"
 alias nvm16 "nvm use 16"
 alias nvma14 "nvm alias default 12"
 alias nvma14 "nvm alias default 14"
 alias nvma16 "nvm alias default 16"
-alias yof "yarn build && yarn workspace @efishery/onefish-docs dev"
-alias yt "yarn test"
 alias prd "pnpm run dev"
 alias clearnode "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 alias findnode "find . -name 'node_modules' -type d -prune"
@@ -51,6 +52,7 @@ alias gsta "git stash"
 alias gstl "git stash list"
 alias gstp "git stash pop"
 alias gf "git fetch"
+alias gb "git branch"
 alias gpom "git pull origin master"
 alias grv "git remote -v"
 
@@ -58,6 +60,7 @@ alias ps "pipenv shell"
 alias pi "pipenv install"
 
 alias fr "flutter run"
+alias lim "/Users/arifinoidefishery/.local/bin/lvim"
 
 command -qv nvim && alias vim nvim
 
@@ -82,6 +85,9 @@ set -gx PATH $GOPATH/bin $PATH
 # set -x PATH $PATH /usr/local/go/bin $GOPATH/bin
 
 # NVM
+export NVM_DIR=~/.nvm
+ [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   status --is-command-substitution; and return
 
@@ -112,3 +118,8 @@ set bashrc $HOME/.bashrc
 [ -f "$bashrc" ] && source "$bashrc"
 
 export PATH="/Users/arifinoidefishery/.ebcli-virtual-env/executables:$PATH"
+
+# Bun
+set -Ux BUN_INSTALL "/Users/arifinoidefishery/.bun"
+set -px --path PATH "/Users/arifinoidefishery/.bun/bin"
+
