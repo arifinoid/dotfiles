@@ -1,3 +1,11 @@
+-- set colorscheme to onedark with protected call
+-- in case it isn't installed
+local status, _ = pcall(vim.cmd, "colorscheme onedark")
+if not status then
+	print("Colorscheme not found!") -- print error if colorscheme not installed
+	return
+end
+
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true
 -- vim.g.tokyonight_italic_comments = true
@@ -19,7 +27,7 @@
 -- require('onedark').load()
 --
 -- vim.cmd('syntax on')
-vim.cmd('colorscheme onedark')
+
 --
 
 -- local base16 = require 'base16'

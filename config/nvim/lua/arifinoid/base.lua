@@ -2,24 +2,6 @@ local o = vim.opt
 local wo = vim.wo
 local bo = vim.bo
 
-local augroup = vim.api.nvim_create_augroup
-local yank_group = augroup('HighlightYank', {})
-
-local autocmd = vim.api.nvim_create_autocmd
-autocmd('TextYankPost', {
-  group = yank_group,
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = 'IncSearch',
-      timeout = 40,
-    })
-  end,
-})
-
-vim.cmd(":set guicursor=i:blinkwait700-blinkon400-blinkoff250-ver25-iCursor")
-vim.cmd(":set guicursor+=n:hor20-Cursor/lCursor")
-vim.cmd("filetype plugin indent on")
 o.shortmess = o.shortmess + "c"
 o.hidden = true
 o.whichwrap = "b,s,<,>,[,],h,l"

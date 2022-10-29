@@ -1,8 +1,15 @@
+vim.cmd(":set guicursor=i:blinkwait700-blinkon400-blinkoff250-ver25-iCursor")
+vim.cmd(":set guicursor+=n:hor20-Cursor/lCursor")
+vim.cmd(":filetype plugin indent on")
+vim.cmd("autocmd Filetype go setlocal tabstop=4")
+vim.notify = require('notify')
+
+
 vim.cmd [[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
+    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({timeout = 40}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end

@@ -1,30 +1,79 @@
 local status, cmp = pcall(require, 'cmp')
 if (not status) then return end
-local lspkind = require 'lspkind'
+
+local lsp_symbols = {
+  Class = "   Class",
+  Color = "   Color",
+  Constant = "   Constant",
+  Constructor = "   Constructor",
+  Enum = " ❐  Enum",
+  EnumMember = "   EnumMember",
+  Event = "   Event",
+  Field = " ﴲ  Field",
+  File = "   File",
+  Folder = "   Folder",
+  Function = "   Function",
+  Interface = " ﰮ  Interface",
+  Keyword = "   Keyword",
+  Method = "   Method",
+  Module = "   Module",
+  Operator = "   Operator",
+  Property = "   Property",
+  Reference = "   Reference",
+  Snippet = " ﬌  Snippet",
+  Struct = " ﳤ  Struct",
+  Text = "   Text",
+  TypeParameter = "   TypeParameter",
+  Unit = "   Unit",
+  Value = "   Value",
+  Variable = "[] Variable",
+}
 
 cmp.setup({
   snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+    expand = function(args) require("luasnip").lsp_expand(args.body) end,
+  },
+  mapping = {
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false,
+    },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  sources = cmp.config.sources {
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    {
+      name = "buffer",
+      option = {
+        get_bufnrs = function() return vim.api.nvim_list_bufs() end,
+      },
+    },
+    { name = "path" },
+    { name = "nvim_lua" },
+  },
+  formatting = {
+    format = function(entry, item)
+      item.kind = lsp_symbols[item.kind]
+      item.menu = ({
+        nvim_lsp = "[LSP]",
+        path = "[F]",
+        luasnip = "[S]",
+        buffer = "[B]",
+        nvim_lua = "[Lua]",
+      })[entry.source.name]
+      return item
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-		['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-  }),
-  formatting = {
-    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
-  }
 })
 
 vim.cmd [[
