@@ -22,6 +22,7 @@ alias tmk "tmux kill-session -a"
 alias ide "tmux split-window -v -p 30;tmux split-window -h -p 66;tmux split-window -h -p 50"
 
 alias ys "yarn start"
+alias ysb "yarn start-backend"
 alias yd "yarn dev"
 alias yd- "yarn develop --watch-admin"
 alias yb "yarn build"
@@ -35,11 +36,11 @@ alias nvm16 "nvm use 16"
 alias nvma14 "nvm alias default 12"
 alias nvma14 "nvm alias default 14"
 alias nvma16 "nvm alias default 16"
+
 alias prd "pnpm run dev"
 alias clearnode "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 alias findnode "find . -name 'node_modules' -type d -prune"
 alias fixnodegyp "npm explore npm/node_modules/@npmcli/run-script -g -- npm_config_global=false npm install node-gyp@latest"
-# alias src.env "export $(cat .env | xargs)"
 
 alias g git
 alias grm "go run main.go"
@@ -64,6 +65,7 @@ alias pi "pipenv install"
 
 alias fr "flutter run"
 alias lim "/Users/arifinoidefishery/.local/bin/lvim"
+alias st "speedtest"
 
 command -qv nvim && alias vim nvim
 
