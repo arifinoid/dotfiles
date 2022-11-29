@@ -34,11 +34,8 @@ return packer.startup(function(use)
 	use("onsails/lspkind-nvim") -- vscode-like pictograms
 
 	-- treesitter configuration
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			require("nvim-treesitter.install").update({ with_sync = true })
-		end,
+	use("nvim-treesitter/nvim-treesitter", {
+		run = ":TSUpdate",
 	})
 
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
@@ -142,6 +139,10 @@ return packer.startup(function(use)
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
 	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+
+	-- debugging
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
 
 	if packer_bootstrap then
 		require("packer").sync()

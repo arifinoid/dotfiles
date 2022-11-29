@@ -107,6 +107,7 @@ nvim_lsp.sumneko_lua.setup({
 	},
 })
 
+nvim_lsp.pyright.setup({})
 nvim_lsp.cssls.setup({})
 nvim_lsp.gopls.setup({
 	on_attach = function(client, bufnr)
