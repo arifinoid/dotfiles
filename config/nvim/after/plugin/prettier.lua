@@ -33,5 +33,7 @@ prettier.setup({
 		trailing_comma = "es5",
 		use_tabs = false,
 		vue_indent_script_and_style = false,
+		singleQuote = true,
+		jsxSingleQuote = true,
 	},
 })

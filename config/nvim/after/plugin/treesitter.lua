@@ -15,6 +15,7 @@ ts.setup({
 		disable = {},
 	},
 	ensure_installed = {
+		"help",
 		"tsx",
 		"toml",
 		"fish",

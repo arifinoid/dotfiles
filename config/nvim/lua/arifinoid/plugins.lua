@@ -41,17 +41,18 @@ return packer.startup(function(use)
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- dark prefered colorscheme
-	-- use {'rose-pine/neovim' }
-	-- use {'navarasu/onedark.nvim' }
-	-- use {'folke/tokyonight.nvim' }
-	-- use {'norcalli/nvim-base16.lua' }
-	-- use {'bluz71/vim-nightfly-guicolors' }
-	-- use {'Mofiqul/vscode.nvim' }
-	-- use {'mangeshrex/everblush.vim' }
-	-- use {'EdenEast/nightfox.nvim' }
-	-- use {'rebelot/kanagawa.nvim' }
-	-- use({ 'catppuccin/nvim', as = 'catppuccin' })
+	use("tomasiser/vim-code-dark")
+	use("cocopon/iceberg.vim")
+	use("Mofiqul/dracula.nvim")
 	use({ "joshdick/onedark.vim" })
+	use({ "morhetz/gruvbox" })
+	-- use({
+	-- 	"rose-pine/neovim",
+	-- 	as = "rose-pine",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- })
 
 	use({ "ahmedkhalf/project.nvim" })
 
@@ -77,7 +78,7 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- LSP
-	use("MunifTanjim/prettier.nvim") -- Prettier plugin for Neovim's built-in LSP client
+	use("prettier/vim-prettier") -- Prettier plugin for Neovim's built-in LSP client
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- LSP UIs
@@ -131,7 +132,6 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim" })
 	use({ "terrortylor/nvim-comment" })
 	use({ "terryma/vim-multiple-cursors" })
-	use({ "psliwka/vim-smoothie" })
 	use({ "wakatime/vim-wakatime" })
 	use({ "jamestthompson3/nvim-remote-containers" })
 	use({ "editorconfig/editorconfig-vim" })
@@ -143,6 +143,8 @@ return packer.startup(function(use)
 	-- debugging
 	use("mfussenegger/nvim-dap")
 	use("rcarriga/nvim-dap-ui")
+
+	use("mbbill/undotree")
 
 	if packer_bootstrap then
 		require("packer").sync()

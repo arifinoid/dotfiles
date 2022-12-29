@@ -4,6 +4,12 @@ if not status then
 end
 
 local protocol = require("vim.lsp.protocol")
+local cmp = require("cmp")
+cmp.setup({
+	sources = {
+		{ name = "buffer" },
+	},
+})
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
@@ -40,6 +46,24 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	vim.keymap.set("n", "<space>f", function()
 		vim.lsp.buf.format()
+	end, opts)
+	vim.keymap.set("n", "gd", function()
+		vim.lsp.buf.definition()
+	end, opts)
+	vim.keymap.set("n", "K", function()
+		vim.lsp.buf.hover()
+	end, opts)
+	vim.keymap.set("n", "<leader>vca", function()
+		vim.lsp.buf.code_action()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrn", function()
+		vim.lsp.buf.rename()
+	end, opts)
+	vim.keymap.set("n", "<leader>vrr", function()
+		vim.lsp.buf.references()
+	end, opts)
+	vim.keymap.set("n", "<C-h>", function()
+		vim.lsp.buf.signature_help()
 	end, opts)
 end
 
@@ -108,6 +132,10 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 nvim_lsp.pyright.setup({})
+nvim_lsp.jedi_language_server.setup({})
+nvim_lsp.rust_analyzer.setup({})
+nvim_lsp.sqlls.setup({})
+
 nvim_lsp.cssls.setup({})
 nvim_lsp.gopls.setup({
 	on_attach = function(client, bufnr)

@@ -1,6 +1,42 @@
 local o = vim.opt
-local wo = vim.wo
+-- local wo = vim.wo
 local bo = vim.bo
+
+o.nu = true
+o.relativenumber = true
+
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.autoindent = true
+o.expandtab = true
+
+o.smartcase = true
+o.smartindent = true
+
+o.wrap = false
+
+o.swapfile = false
+o.backup = false
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undofile = true
+
+o.hlsearch = false
+o.incsearch = true
+
+-- highlights
+o.termguicolors = true
+o.cursorline = true
+o.winblend = 0
+o.wildoptions = "pum"
+o.pumblend = 5
+
+o.scrolloff = 8
+o.signcolumn = "yes"
+o.isfname:append("@-@")
+
+o.updatetime = 50
+o.colorcolumn = "80"
 
 o.shortmess = o.shortmess + "c"
 o.hidden = true
@@ -15,37 +51,13 @@ o.showtabline = 2
 o.showmode = false
 o.backup = false
 o.writebackup = false
-o.updatetime = 300
 o.timeoutlen = 100
 o.clipboard = "unnamedplus"
-o.hlsearch = false
 o.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-o.scrolloff = 3
 o.sidescrolloff = 5
 o.mouse = "a"
-o.smartcase = true
-o.smartindent = true
-o.relativenumber = true
-o.signcolumn = "yes"
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
-o.autoindent = true
-o.expandtab = true
-o.wrap = false -- No Wrap lines
-o.path:append { '**' } -- Finding files - Search down into subfolders
-o.formatoptions:append { 'r' }
-
--- highlights
-o.cursorline = true
-o.termguicolors = true
-o.winblend = 0
-o.wildoptions = 'pum'
-o.pumblend = 5
-o.background = 'dark'
-
-wo.wrap = false
-wo.number = true
+o.path:append({ "**" }) -- Finding files - Search down into subfolders
+o.formatoptions:append({ "r" })
 
 bo.expandtab = true
 bo.shiftwidth = 2
