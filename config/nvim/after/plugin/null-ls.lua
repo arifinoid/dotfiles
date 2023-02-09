@@ -11,26 +11,20 @@ local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- configure null_ls
 null_ls.setup({
 	-- setup formatters & linters
 	sources = {
-		--  to disable file types use
-		--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
-		formatting.prettierd,
-		formatting.prettier, -- js/ts formatter
-		formatting.stylua, -- lua formatter
+		-- formatting.prettierd,
+		-- formatting.prettier,
+		formatting.stylua,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.rustfmt,
 
+		diagnostics.fish,
 		diagnostics.eslint_d.with({
 			diagnostics_format = "[eslint] #{m}\n(#{c})",
-		}),
-		diagnostics.fish,
-		diagnostics.eslint_d.with({ -- js/ts linter
-			-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)
 			condition = function(utils)
-				return utils.root_has_file(".eslintrc.js") -- change file extension if you use something else
+				return utils.root_has_file(".eslintrc.js")
 			end,
 		}),
 	},

@@ -5,6 +5,38 @@ local default_options = { noremap = true, silent = true }
 
 map("i", "<C-c>", "<Esc>", default_options)
 
+-- Move to previous/next
+
+map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", default_options)
+map("n", "<Tab>", "<Cmd>BufferNext<CR>", default_options)
+-- Re-order to previous/next
+-- map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", default_options)
+-- map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", default_options)
+-- Goto buffer in position...
+map("n", "<C-1>", "<Cmd>BufferGoto 1<CR>", default_options)
+map("n", "<C-2>", "<Cmd>BufferGoto 2<CR>", default_options)
+map("n", "<C-3>", "<Cmd>BufferGoto 3<CR>", default_options)
+map("n", "<C-4>", "<Cmd>BufferGoto 4<CR>", default_options)
+map("n", "<C-5>", "<Cmd>BufferGoto 5<CR>", default_options)
+map("n", "<C-6>", "<Cmd>BufferGoto 6<CR>", default_options)
+map("n", "<C-7>", "<Cmd>BufferGoto 7<CR>", default_options)
+map("n", "<C-8>", "<Cmd>BufferGoto 8<CR>", default_options)
+map("n", "<C-9>", "<Cmd>BufferGoto 9<CR>", default_options)
+map("n", "<C-0>", "<Cmd>BufferLast<CR>", default_options)
+-- Pin/unpin buffer
+-- map("n", "<C-p>", "<Cmd>BufferPin<CR>", default_options)
+-- Close buffer
+map("n", "<C-w>", "<Cmd>BufferClose<CR>", default_options)
+-- Wipeout buffer
+--                 :BufferWipeout
+-- Close commands
+--                 :BufferCloseAllButCurrent
+--                 :BufferCloseAllButPinned
+--                 :BufferCloseAllButCurrentOrPinned
+--                 :BufferCloseBuffersLeft
+--                 :BufferCloseBuffersRight
+-- Magic buffer-picking mode
+
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 keymap.set("n", "J", "mzJ`z")
@@ -28,7 +60,12 @@ keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+keymap.set("n", "<leader>v", ":MarkdownPreviewToggle<CR>", { silent = true })
 
+-- keymap.set("n", "<C-v>", ":MarkdownPreviewToggle<CR>")
+
+-- map("n", "<Tab>", ":BufferLineCycleNext<CR>", default_options)
+-- map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", default_options)
 map("n", "<C-h>", "<C-w>h", default_options)
 map("n", "<C-l>", "<C-w>l", default_options)
 map("n", "<C-j>", "<C-w>j", default_options)
@@ -73,9 +110,6 @@ map("v", ">", ">gv", default_options)
 map("x", "J", ":move '>+1<CR>gv-gv", default_options)
 map("x", "K", ":move '<-2<CR>gv-gv", default_options)
 
--- barbar
-map("n", "<Tab>", ":BufferNext<CR>", default_options)
-map("n", "<S-Tab>", ":BufferPrevious<CR>", default_options)
 -- Pin/unpin buffer
 -- Close buffer
 -- Wipeout buffer
@@ -89,3 +123,13 @@ map("n", "<S-Tab>", ":BufferPrevious<CR>", default_options)
 -- Magic buffer-picking mode
 map("n", "<S-p>", "<Cmd>BufferPick<CR>", default_options)
 -- Sort automatically by...
+
+-- lspsaga keymaps
+-- local opts = { noremap = true, silent = true }
+-- keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+-- keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
+-- keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+-- keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
+-- keymap.set("n", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
+-- keymap.set("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
+-- keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)

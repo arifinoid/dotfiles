@@ -1,152 +1,170 @@
--- auto install packer if not installed
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
-		return true
-	end
-	return false
-end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
-
--- autocommand that reloads neovim and installs/updates/removes plugins
--- when file is saved
-vim.cmd([[ 
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
-
--- import packer safely
-local status, packer = pcall(require, "packer")
-if not status then
-	return
-end
-
-return packer.startup(function(use)
-	use("wbthomason/packer.nvim")
-	use("nvim-lua/plenary.nvim") -- Common utilities
-
-	use("nvim-lualine/lualine.nvim") -- Statusline
-	use("onsails/lspkind-nvim") -- vscode-like pictograms
-
-	-- treesitter configuration
-	use("nvim-treesitter/nvim-treesitter", {
-		run = ":TSUpdate",
-	})
-
-	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
-
-	-- dark prefered colorscheme
-	use("tomasiser/vim-code-dark")
-	use("cocopon/iceberg.vim")
-	use("Mofiqul/dracula.nvim")
-	use({ "joshdick/onedark.vim" })
-	use({ "morhetz/gruvbox" })
-	-- use({
-	-- 	"rose-pine/neovim",
-	-- 	as = "rose-pine",
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme rose-pine")
-	-- 	end,
-	-- })
-
-	use({ "ahmedkhalf/project.nvim" })
-
-	-- vs-code like icons
-	use("kyazdani42/nvim-web-devicons")
-	-- file explorer
-	use("nvim-tree/nvim-tree.lua")
-
-	-- commenting with gc
-	use("numToStr/Comment.nvim")
-
-	-- auto closing
-	use({ "windwp/nvim-ts-autotag", event = "InsertEnter", after = "nvim-treesitter" })
-	use({ "windwp/nvim-autopairs", after = "nvim-cmp" })
-
-	-- fuzzy finding w/ telescope
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
-	use("nvim-telescope/telescope.nvim")
-
-	use({ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" })
-	use({ "folke/which-key.nvim" })
-	use({ "lewis6991/impatient.nvim" })
+return {
+	"projekt0n/github-nvim-theme",
+	"xiyaowong/nvim-transparent",
+	"tomasiser/vim-code-dark",
+	"cocopon/iceberg.vim",
+	"Mofiqul/dracula.nvim",
+	"joshdick/onedark.vim",
+	"morhetz/gruvbox",
+	"shaunsingh/nord.nvim",
+	"folke/tokyonight.nvim",
+	"sainnhe/everforest",
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("rose-pine").setup()
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- LSP
-	use("prettier/vim-prettier") -- Prettier plugin for Neovim's built-in LSP client
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- LSP UIs
-	use("arkav/lualine-lsp-progress") -- LSP Status
-	use({ "ray-x/lsp_signature.nvim" })
+	"neovim/nvim-lspconfig",
+	"prettier/vim-prettier",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"arkav/lualine-lsp-progress",
+	"onsails/lspkind-nvim",
+
+	"jose-elias-alvarez/null-ls.nvim",
+	"jayp0521/mason-null-ls.nvim",
 
 	-- autocompletion
-	use("hrsh7th/nvim-cmp") -- Completion
-	use("hrsh7th/cmp-buffer") -- nvim-cmp source for buffer words
-	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim's built-in LSP
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-nvim-lua")
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-path",
+	"hrsh7th/cmp-nvim-lua",
 
-	-- snippets
-	use("saadparwaiz1/cmp_luasnip")
-	use({
+	--snippets
+	"saadparwaiz1/cmp_luasnip",
+	"rafamadriz/friendly-snippets",
+	{
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
 		config = function()
 			require("arifinoid.snippets")
 		end,
-	}) --snippet engine
-	use({ "rafamadriz/friendly-snippets" }) -- a bunch of snippets to use
+	},
 
-	-- Git
-	use("lewis6991/gitsigns.nvim")
-	use("dinhhuy258/git.nvim")
-
-	use({ "lukas-reineke/format.nvim", cmd = "Format" })
-	use("norcalli/nvim-colorizer.lua")
-	use({ "rcarriga/nvim-notify" })
-	use({
-		"romgrk/barbar.nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
-
-	use({
-		"goolord/alpha-nvim",
+	{
+		"Exafunction/codeium.vim",
 		config = function()
-			require("alpha").setup(require("alpha.themes.theta").config)
+			vim.keymap.set("i", "<C-y>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+			vim.keymap.set("i", "<c-;>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true })
+			vim.keymap.set("i", "<c-,>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true })
 		end,
-	})
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
-
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "akinsho/toggleterm.nvim" })
-	use({ "terrortylor/nvim-comment" })
-	use({ "terryma/vim-multiple-cursors" })
-	use({ "wakatime/vim-wakatime" })
-	use({ "jamestthompson3/nvim-remote-containers" })
-	use({ "editorconfig/editorconfig-vim" })
-
-	-- formatting & linting
-	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+	},
 
 	-- debugging
-	use("mfussenegger/nvim-dap")
-	use("rcarriga/nvim-dap-ui")
+	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
 
-	use("mbbill/undotree")
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 
-	if packer_bootstrap then
-		require("packer").sync()
-	end
-end)
+	{ "romgrk/barbar.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
+	"nvim-tree/nvim-tree.lua",
+
+	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
+	{ "nvim-treesitter/nvim-treesitter", dependencies = {
+		"p00f/nvim-ts-rainbow",
+	} },
+
+	"windwp/nvim-ts-autotag",
+	{ "windwp/nvim-autopairs", config = true, event = "InsertEnter" },
+
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	},
+
+	"nvim-telescope/telescope-ui-select.nvim",
+	"j-hui/fidget.nvim",
+
+	{ "numToStr/Comment.nvim", config = true, event = "BufEnter" },
+	{ "terrortylor/nvim-comment" },
+	{ "folke/todo-comments.nvim" },
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	{
+		"echasnovski/mini.comment",
+		event = "VeryLazy",
+		opts = {
+			hooks = {
+				pre = function()
+					require("ts_context_commentstring.internal").update_commentstring({})
+				end,
+			},
+		},
+		config = function(_, opts)
+			require("mini.comment").setup(opts)
+		end,
+	},
+
+	"dinhhuy258/git.nvim",
+	{ "folke/tokyonight.nvim" },
+	{ "phaazon/hop.nvim", branch = "v2", config = true, event = "BufEnter" },
+	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
+	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
+	{
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+				lsp = {
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true,
+					},
+				},
+				presets = {
+					bottom_search = true,
+					command_palette = true,
+					long_message_to_split = true,
+					inc_rename = false,
+					lsp_doc_border = false,
+				},
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+
+	"goolord/alpha-nvim",
+	"rcarriga/nvim-notify",
+	"folke/which-key.nvim",
+	"akinsho/toggleterm.nvim",
+	"mbbill/undotree",
+	"ahmedkhalf/project.nvim",
+	"lewis6991/impatient.nvim",
+	"norcalli/nvim-colorizer.lua",
+	"tpope/vim-surround",
+
+	-- sessions
+	{ "dhruvasagar/vim-prosession", dependencies = { "tpope/vim-obsession" } },
+	{ "echasnovski/mini.nvim", version = "*" },
+}

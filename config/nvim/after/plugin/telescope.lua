@@ -10,6 +10,8 @@ if not actions_setup then
 	return
 end
 
+pcall(require("telescope").load_extension, "fzf")
+
 telescope.setup({
 	defaults = {
 		layout_config = {
@@ -57,5 +59,3 @@ telescope.setup({
 		},
 	},
 })
-
-telescope.load_extension("fzf")
