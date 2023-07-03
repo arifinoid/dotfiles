@@ -135,13 +135,14 @@ local servers = {
 	golangci_lint_ls = {
 		cmd = { "golangci-lint-langserver" },
 	},
+	rnix = {},
 	pyright = {},
 	rust_analyzer = {},
 	html = {},
 	cssls = {},
 	tailwindcss = {},
 	sqlls = {},
-	sumneko_lua = {
+	lua_ls = {
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },
@@ -150,6 +151,15 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
+	-- sumneko_lua = {
+	-- 	Lua = {
+	-- 		diagnostics = {
+	-- 			globals = { "vim" },
+	-- 		},
+	-- 		workspace = { checkThirdParty = false },
+	-- 		telemetry = { enable = false },
+	-- 	},
+	-- },
 }
 
 mason_lspconfig.setup({
@@ -157,7 +167,7 @@ mason_lspconfig.setup({
 	automatic_installation = true,
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 mason_lspconfig.setup_handlers({

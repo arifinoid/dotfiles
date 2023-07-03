@@ -9,6 +9,7 @@ return {
 	"shaunsingh/nord.nvim",
 	"folke/tokyonight.nvim",
 	"sainnhe/everforest",
+	{ "catppuccin/nvim", name = "catppuccin" },
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
@@ -55,13 +56,13 @@ return {
 			vim.keymap.set("i", "<C-y>", function()
 				return vim.fn["codeium#Accept"]()
 			end, { expr = true })
-			vim.keymap.set("i", "<c-;>", function()
+			vim.keymap.set("i", "<C-;>", function()
 				return vim.fn["codeium#CycleCompletions"](1)
 			end, { expr = true })
-			vim.keymap.set("i", "<c-,>", function()
+			vim.keymap.set("i", "<C-,>", function()
 				return vim.fn["codeium#CycleCompletions"](-1)
 			end, { expr = true })
-			vim.keymap.set("i", "<c-x>", function()
+			vim.keymap.set("i", "<C-x>", function()
 				return vim.fn["codeium#Clear"]()
 			end, { expr = true })
 		end,
@@ -102,8 +103,10 @@ return {
 	},
 
 	"nvim-telescope/telescope-ui-select.nvim",
-	"j-hui/fidget.nvim",
-
+	{
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+	},
 	{ "numToStr/Comment.nvim", config = true, event = "BufEnter" },
 	{ "terrortylor/nvim-comment" },
 	{ "folke/todo-comments.nvim" },
@@ -130,26 +133,16 @@ return {
 	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
 	{
 		"folke/noice.nvim",
-		config = function()
-			require("noice").setup({
-				lsp = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
-					},
-				},
-				presets = {
-					bottom_search = true,
-					command_palette = true,
-					long_message_to_split = true,
-					inc_rename = false,
-					lsp_doc_border = false,
-				},
-			})
-		end,
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
 		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
 	},
