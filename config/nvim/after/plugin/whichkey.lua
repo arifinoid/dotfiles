@@ -67,6 +67,16 @@ local mappings = {
 		f = { toggle_float, "[f]loating Terminal" },
 		l = { toggle_lazygit, "[l]azyGit" },
 	},
+	g = {
+		name = "[g]it",
+		o = { "<cmd>GitConflictChooseOurs<cr>", "Git conflict choose [o]urs" },
+		t = { "<cmd>GitConflictChooseTheirs<cr>", "Git conflict choose [t]heirs" },
+		b = { "<cmd>GitConflictChooseBoth<cr>", "Git conflict choose [b]oth" },
+		N = { "<cmd>GitConflictChooseNone<cr>", "Git conflict choose [N]one" },
+		n = { "<cmd>GitConflictNextConflict<cr>", "Go to [n]ext conflict" },
+		p = { "<cmd>GitConflictPrevConflict<cr>", "Go to [p]rev conflict" },
+		l = { "<cmd>GitConflictListQf<cr>", "[l]ist all quickfix" },
+	},
 }
 
 local opts = {

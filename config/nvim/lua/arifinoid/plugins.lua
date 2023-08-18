@@ -126,7 +126,8 @@ return {
 		end,
 	},
 
-	"dinhhuy258/git.nvim",
+	{ "dinhhuy258/git.nvim" },
+	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{ "folke/tokyonight.nvim" },
 	{ "phaazon/hop.nvim", branch = "v2", config = true, event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
