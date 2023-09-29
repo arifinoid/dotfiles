@@ -1,4 +1,4 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
+local status_ok, indent_blankline = pcall(require, "ibl")
 if not status_ok then
 	return
 end
@@ -44,25 +44,16 @@ vim.g.indent_blankline_context_patterns = {
 -- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 vim.wo.colorcolumn = "99999"
 
--- vim.cmd [[highlight IndentBlanklineIndent1 fg=#E06C75 gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent2 fg=#E5C07B gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent3 fg=#98C379 gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent4 fg=#56B6C2 gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent5 fg=#61AFEF gui=nocombine]]
--- vim.cmd [[highlight IndentBlanklineIndent6 fg=#C678DD gui=nocombine]]
--- vim.opt.list = true
--- vim.opt.listchars:append "space:⋅"
--- vim.opt.listchars:append "space:"
--- vim.opt.listchars:append "eol:↴"
+local highlight = {
+	"CursorColumn",
+	"Whitespace",
+}
 
 indent_blankline.setup({
-	-- show_end_of_line = true,
-	-- space_char_blankline = " ",
-	show_current_context = true,
-	-- show_current_context_start = true,
-	-- char_highlight_list = {
-	--   "IndentBlanklineIndent1",
-	--   "IndentBlanklineIndent2",
-	--   "IndentBlanklineIndent3",
-	-- },
+	indent = { highlight = highlight, char = "" },
+	whitespace = {
+		highlight = highlight,
+		remove_blankline_trail = false,
+	},
+	scope = { enabled = false },
 })

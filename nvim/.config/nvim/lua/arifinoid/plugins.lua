@@ -20,6 +20,7 @@ return {
 			vim.cmd("colorscheme rose-pine")
 		end,
 	},
+	{ "phaazon/hop.nvim", branch = "v2", config = true, event = "BufEnter" },
 
 	-- LSP
 	"neovim/nvim-lspconfig",
@@ -28,7 +29,6 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	"arkav/lualine-lsp-progress",
 	"onsails/lspkind-nvim",
-
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
 
@@ -83,9 +83,12 @@ return {
 	"nvim-tree/nvim-tree.lua",
 
 	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
-	{ "nvim-treesitter/nvim-treesitter", dependencies = {
-		"p00f/nvim-ts-rainbow",
-	} },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"p00f/nvim-ts-rainbow",
+		},
+	},
 
 	"windwp/nvim-ts-autotag",
 	{ "windwp/nvim-autopairs", config = true, event = "InsertEnter" },
@@ -126,24 +129,20 @@ return {
 		end,
 	},
 
+	-- git
 	{ "dinhhuy258/git.nvim" },
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
-	{ "folke/tokyonight.nvim" },
-	{ "phaazon/hop.nvim", branch = "v2", config = true, event = "BufEnter" },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
+	"tpope/vim-fugitive",
+	"jreybert/vimagit",
+
 	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
+		opts = {},
 		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		},
 	},
@@ -161,4 +160,18 @@ return {
 	-- sessions
 	{ "dhruvasagar/vim-prosession", dependencies = { "tpope/vim-obsession" } },
 	{ "echasnovski/mini.nvim", version = "*" },
+
+	-- notes
+	{
+		"renerocksai/telekasten.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("telekasten").setup({
+				home = vim.fn.expand("~/telekasten-notes"),
+			})
+		end,
+	},
+
+	-- platform
+	"wakatime/vim-wakatime",
 }

@@ -71,7 +71,6 @@ ts.setup({
 		"css",
 		"fish",
 		"go",
-		"help",
 		"html",
 		"javascript",
 		"json",

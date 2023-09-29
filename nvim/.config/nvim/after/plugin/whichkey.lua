@@ -77,6 +77,17 @@ local mappings = {
 		p = { "<cmd>GitConflictPrevConflict<cr>", "Go to [p]rev conflict" },
 		l = { "<cmd>GitConflictListQf<cr>", "[l]ist all quickfix" },
 	},
+	n = {
+		name = "[n]ote",
+		f = { ":<cmd>Telekasten find_notes<CR>", "Telekasten find notes" },
+		s = { ":<cmd>Telekasten search_notes<CR>", "Telekasten search notes" },
+		n = { ":<cmd>Telekasten new_note<CR>", "Telekasten new notes" },
+		t = { ":<cmd>Telekasten goto_today<CR>", "Telekasten go to today note" },
+		l = { ":<cmd>Telekasten follow_link<CR>", "Telekasten follow link note" },
+		c = { ":<cmd>Telekasten show_calendar<CR>", "Telekasten show calendar" },
+		b = { ":<cmd>Telekasten show_backlinks<CR>", "Telekasten show backlinks" },
+		i = { ":<cmd>Telekasten insert_img_link<CR>", "Telekasten insert img link" },
+	},
 }
 
 local opts = {
