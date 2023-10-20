@@ -134,7 +134,6 @@ return {
 	{ "akinsho/git-conflict.nvim", version = "*", config = true },
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
 	"tpope/vim-fugitive",
-	"jreybert/vimagit",
 
 	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
 	{
