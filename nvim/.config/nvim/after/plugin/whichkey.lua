@@ -32,6 +32,10 @@ local mappings = {
 	E = { ":e ~/.config/nvim/init.lua<cr>", "Edit config" },
 	r = { ":Telescope live_grep<cr>", "Telescope Live Grep" },
 	-- s = { ":Telescope grep_string<cr>", "Telescope Search Text under cursor" },
+	c = {
+		name = "[c]ode",
+		t = { ":TroubleToggle<cr>", "[t]rouble toggle" },
+	},
 	l = {
 		name = "[l]sp",
 		i = { ":LspInfo<cr>", "Connected Language Servers" },

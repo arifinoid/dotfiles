@@ -71,6 +71,11 @@ return {
 	-- debugging
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
