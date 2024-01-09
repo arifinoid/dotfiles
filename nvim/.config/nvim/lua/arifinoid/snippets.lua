@@ -1,5 +1,17 @@
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
+local extras = require("luasnip.extras")
+
+local s = ls.snippet
+local t = ls.text_node
+local i = ls.insert_node
+local rep = extras.rep
+
+ls.add_snippets("go", {
+	s("goprintf", {
+		t("fmt.Printf(", i(1), t("%+v\\n, "), rep(1), t({ ")", "" })),
+	}),
+})
 
 ls.config.set_config({
 	history = true,

@@ -32,6 +32,19 @@ return {
 	"jose-elias-alvarez/null-ls.nvim",
 	"jayp0521/mason-null-ls.nvim",
 
+	-- quick lint
+	"dense-analysis/ale",
+	{ "neoclide/coc.nvim", branch = "release" },
+	{
+		"quick-lint/quick-lint-js",
+		version = "3.0.0",
+		lazy = true,
+		config = function(plugin)
+			vim.opt.rtp:append(plugin.dir .. "plugin/vim/quick-lint-js.vim")
+			require("lspconfig/quick_lint_js").setup({})
+		end,
+	},
+
 	-- autocompletion
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
@@ -140,7 +153,14 @@ return {
 	{ "lewis6991/gitsigns.nvim", config = true, event = "BufEnter" },
 	"tpope/vim-fugitive",
 
-	{ "iamcco/markdown-preview.nvim", ft = "markdown" },
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
