@@ -94,6 +94,7 @@ mason.setup({
 			package_uninstalled = "✗",
 		},
 	},
+	PATH = "prepend", -- "skip" seems to cause the spawning error
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
