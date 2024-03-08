@@ -152,15 +152,6 @@ local servers = {
 			telemetry = { enable = false },
 		},
 	},
-	-- sumneko_lua = {
-	-- 	Lua = {
-	-- 		diagnostics = {
-	-- 			globals = { "vim" },
-	-- 		},
-	-- 		workspace = { checkThirdParty = false },
-	-- 		telemetry = { enable = false },
-	-- 	},
-	-- },
 }
 
 mason_lspconfig.setup({
@@ -190,7 +181,7 @@ mason_null_ls.setup({
 		"gofumpt",
 		"goimports",
 		"golines",
-		"black",
+		-- "black",
 		"sql_formatter",
 	},
 	automatic_installation = true,

@@ -25,16 +25,18 @@ local toggle_lazygit = function()
 	return lazygit:toggle()
 end
 local mappings = {
+	a = { "gg<S-v>G", "Select All" },
 	q = { ":q<cr>", "Quit" },
 	Q = { ":wq<cr>", "Save & Quit" },
 	w = { ":w<cr>", "Save" },
 	x = { ":bdelete<cr>", "Close" },
 	E = { ":e ~/.config/nvim/init.lua<cr>", "Edit config" },
 	r = { ":Telescope live_grep<cr>", "Telescope Live Grep" },
-	-- s = { ":Telescope grep_string<cr>", "Telescope Search Text under cursor" },
 	c = {
 		name = "[c]ode",
 		t = { ":TroubleToggle<cr>", "[t]rouble toggle" },
+		z = { ":set foldmethod=expr<CR>", "set foldexpr" },
+		x = { ":set foldexpr=nvim_treesitter#foldexpr()<CR>", "fold all block codes" },
 	},
 	l = {
 		name = "[l]sp",

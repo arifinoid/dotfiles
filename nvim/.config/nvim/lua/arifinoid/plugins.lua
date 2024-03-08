@@ -21,6 +21,7 @@ return {
 		end,
 	},
 	{ "phaazon/hop.nvim", branch = "v2", config = true, event = "BufEnter" },
+	{ "rescript-lang/vim-rescript", ft = "rescript" },
 
 	-- LSP
 	"neovim/nvim-lspconfig",
@@ -33,17 +34,17 @@ return {
 	"jayp0521/mason-null-ls.nvim",
 
 	-- quick lint
-	"dense-analysis/ale",
-	{ "neoclide/coc.nvim", branch = "release" },
-	{
-		"quick-lint/quick-lint-js",
-		version = "3.0.0",
-		lazy = true,
-		config = function(plugin)
-			vim.opt.rtp:append(plugin.dir .. "plugin/vim/quick-lint-js.vim")
-			require("lspconfig/quick_lint_js").setup({})
-		end,
-	},
+	-- "dense-analysis/ale",
+	-- { "neoclide/coc.nvim", branch = "release" },
+	-- {
+	-- 	"quick-lint/quick-lint-js",
+	-- 	version = "3.0.0",
+	-- 	lazy = true,
+	-- 	config = function(plugin)
+	-- 		vim.opt.rtp:append(plugin.dir .. "plugin/vim/quick-lint-js.vim")
+	-- 		require("lspconfig/quick_lint_js").setup({})
+	-- 	end,
+	-- },
 
 	-- autocompletion
 	"hrsh7th/nvim-cmp",
@@ -52,7 +53,7 @@ return {
 	"hrsh7th/cmp-path",
 	"hrsh7th/cmp-nvim-lua",
 
-	--snippets
+	-- snippets
 	"saadparwaiz1/cmp_luasnip",
 	"rafamadriz/friendly-snippets",
 	{
@@ -63,6 +64,22 @@ return {
 		end,
 	},
 
+	-- gpt
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup({
+				api_key_cmd = "pass show api/tokens/openai",
+			})
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"folke/trouble.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 	{
 		"Exafunction/codeium.vim",
 		config = function()
