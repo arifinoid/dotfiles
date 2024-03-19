@@ -25,7 +25,6 @@ local toggle_lazygit = function()
 	return lazygit:toggle()
 end
 local mappings = {
-	a = { "gg<S-v>G", "Select All" },
 	q = { ":q<cr>", "Quit" },
 	Q = { ":wq<cr>", "Save & Quit" },
 	w = { ":w<cr>", "Save" },
@@ -35,8 +34,6 @@ local mappings = {
 	c = {
 		name = "[c]ode",
 		t = { ":TroubleToggle<cr>", "[t]rouble toggle" },
-		z = { ":set foldmethod=expr<CR>", "set foldexpr" },
-		x = { ":set foldexpr=nvim_treesitter#foldexpr()<CR>", "fold all block codes" },
 	},
 	l = {
 		name = "[l]sp",

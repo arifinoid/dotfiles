@@ -1,3 +1,11 @@
+local neodev_status, neodev = pcall(require, "neodev")
+if not neodev_status then
+	return
+end
+neodev.setup({
+	library = { plugins = { "nvim-dap-ui" }, types = true },
+})
+
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
 	return

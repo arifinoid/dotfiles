@@ -99,6 +99,11 @@ map("n", "gc", ":Telescope git_commits<CR>", default_options)
 map("n", "gs", ":Telescope git_status<CR>", default_options)
 map("n", "<J>", ":m .+1<CR>", default_options)
 map("n", "<K>", ":m .-2<CR>", default_options)
+map("n", "+", "<C-a>", default_options)
+map("n", "-", "<C-x>", default_options)
+map("n", "<C-z>", ":set foldmethod=expr<CR>", default_options)
+map("n", "<C-x>", ":set foldexpr=nvim_treesitter#foldexpr()<CR>", default_options)
+map("n", "<C-a>", "gg<S-v>G", default_options) -- Select all
 keymap.set("n", "te", ":tabedit")
 -- visual mode
 map("v", "<", "<gv", default_options)

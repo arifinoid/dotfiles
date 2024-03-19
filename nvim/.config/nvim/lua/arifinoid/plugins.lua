@@ -99,8 +99,8 @@ return {
 	},
 
 	-- debugging
-	"mfussenegger/nvim-dap",
-	"rcarriga/nvim-dap-ui",
+	{ "folke/neodev.nvim", opts = {} },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
