@@ -105,6 +105,17 @@ map("n", "<C-z>", ":set foldmethod=expr<CR>", default_options)
 map("n", "<C-x>", ":set foldexpr=nvim_treesitter#foldexpr()<CR>", default_options)
 map("n", "<C-a>", "gg<S-v>G", default_options) -- Select all
 keymap.set("n", "te", ":tabedit")
+
+-- obsidian
+map("n", "<leader>oc", "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", { desc = "Obsidian toggle checkbox" })
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert Obsidian template" })
+map("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open in Obsidian App" })
+map("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show Obsidian Backlinks" })
+map("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Show Obsidian Links" })
+map("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Create New Note" })
+map("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Search Note" })
+map("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })
+
 -- visual mode
 map("v", "<", "<gv", default_options)
 map("v", ">", ">gv", default_options)
