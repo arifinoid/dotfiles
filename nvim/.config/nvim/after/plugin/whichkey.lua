@@ -31,10 +31,6 @@ local mappings = {
 	x = { ":bdelete<cr>", "Close" },
 	E = { ":e ~/.config/nvim/init.lua<cr>", "Edit config" },
 	r = { ":Telescope live_grep<cr>", "Telescope Live Grep" },
-	c = {
-		name = "[c]ode",
-		t = { ":TroubleToggle<cr>", "[t]rouble toggle" },
-	},
 	l = {
 		name = "[l]sp",
 		i = { ":LspInfo<cr>", "Connected Language Servers" },

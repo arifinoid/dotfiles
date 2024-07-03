@@ -65,21 +65,21 @@ return {
 	},
 
 	-- gpt
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup({
-				api_key_cmd = "pass show api/tokens/openai",
-			})
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	},
+	-- {
+	-- 	"jackMort/ChatGPT.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("chatgpt").setup({
+	-- 			api_key_cmd = "pass show api/tokens/openai",
+	-- 		})
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"folke/trouble.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- },
 	{
 		"Exafunction/codeium.vim",
 		config = function()
@@ -103,8 +103,40 @@ return {
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	{
 		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>ct",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cd",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>xl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
 	},
 
 	{
@@ -117,7 +149,7 @@ return {
 	{ "romgrk/barbar.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
 	"nvim-tree/nvim-tree.lua",
 
-	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter" },
+	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", commit = "3d08501caef2329aba5121b753e903904088f7e6" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
