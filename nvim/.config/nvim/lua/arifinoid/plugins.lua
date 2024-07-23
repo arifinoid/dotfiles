@@ -222,7 +222,7 @@ return {
 
 	"goolord/alpha-nvim",
 	"rcarriga/nvim-notify",
-	"folke/which-key.nvim",
+	{ "folke/which-key.nvim", commit = "af4ded85542d40e190014c732fa051bdbf88be3d" },
 	"akinsho/toggleterm.nvim",
 	"mbbill/undotree",
 	"ahmedkhalf/project.nvim",
@@ -274,5 +274,22 @@ return {
 				background = "#94e2d5",
 			})
 		end,
+	},
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim", -- required by telescope
+			"MunifTanjim/nui.nvim",
+
+			-- optional
+			"nvim-treesitter/nvim-treesitter",
+			"rcarriga/nvim-notify",
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {
+			-- configuration goes here
+		},
 	},
 }
