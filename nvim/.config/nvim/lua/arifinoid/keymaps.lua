@@ -5,8 +5,41 @@ local default_options = { noremap = true, silent = true }
 
 map("i", "<C-c>", "<Esc>", default_options)
 
--- Move to previous/next
+keymap.set("n", "<leader>m", function()
+	require("llm").create_llm_md()
+end, { desc = "Create llm.md" })
 
+-- keybinds for prompting with groq
+keymap.set("n", "<leader>,", function()
+	require("llm").prompt({ replace = false, service = "groq" })
+end, { desc = "Prompt with groq" })
+keymap.set("v", "<leader>,", function()
+	require("llm").prompt({ replace = false, service = "groq" })
+end, { desc = "Prompt with groq" })
+keymap.set("v", "<leader>.", function()
+	require("llm").prompt({ replace = true, service = "groq" })
+end, { desc = "Prompt while replacing with groq" })
+
+-- keybinds for prompting with openai
+keymap.set("n", "<leader>g,", function()
+	require("llm").prompt({ replace = false, service = "openai" })
+end, { desc = "Prompt with openai" })
+keymap.set("v", "<leader>g,", function()
+	require("llm").prompt({ replace = false, service = "openai" })
+end, { desc = "Prompt with openai" })
+keymap.set("v", "<leader>g.", function()
+	require("llm").prompt({ replace = true, service = "openai" })
+end, { desc = "Prompt while replacing with openai" })
+
+-- keybinds to support vim motions
+keymap.set("n", "g,", function()
+	require("llm").prompt_operatorfunc({ replace = false, service = "groq" })
+end, { desc = "Prompt with groq" })
+keymap.set("n", "g.", function()
+	require("llm").prompt_operatorfunc({ replace = true, service = "groq" })
+end, { desc = "Prompt while replacing with groq" })
+
+-- Move to previous/next
 map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", default_options)
 map("n", "<Tab>", "<Cmd>BufferNext<CR>", default_options)
 -- Re-order to previous/next

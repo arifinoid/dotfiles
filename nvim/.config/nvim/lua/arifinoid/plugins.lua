@@ -65,21 +65,6 @@ return {
 	},
 
 	-- gpt
-	-- {
-	-- 	"jackMort/ChatGPT.nvim",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require("chatgpt").setup({
-	-- 			api_key_cmd = "pass show api/tokens/openai",
-	-- 		})
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"folke/trouble.nvim",
-	-- 		"nvim-telescope/telescope.nvim",
-	-- 	},
-	-- },
 	{
 		"Exafunction/codeium.vim",
 		config = function()
@@ -96,6 +81,10 @@ return {
 				return vim.fn["codeium#Clear"]()
 			end, { expr = true })
 		end,
+	},
+	{
+		"melbaldove/llm.nvim",
+		dependencies = { "nvim-neotest/nvim-nio" },
 	},
 
 	-- debugging
