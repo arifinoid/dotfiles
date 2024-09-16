@@ -117,7 +117,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 local servers = {
-	tsserver = {
+	ts_ls = {
 		filetypes = {
 			"typescript",
 			"typescriptreact",
