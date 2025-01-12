@@ -1,4 +1,7 @@
-local notify = require("notify")
+local status, notify = pcall(require, "notify")
+if not status then
+	return
+end
 local opts = {
 	background_colour = "#000000",
 	fps = 30,

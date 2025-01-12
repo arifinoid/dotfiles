@@ -2,10 +2,14 @@ vim.cmd(":set guicursor=i:blinkwait700-blinkon400-blinkoff250-ver25-iCursor")
 vim.cmd(":set guicursor+=n:hor20-Cursor/lCursor")
 vim.cmd(":filetype plugin indent on")
 vim.cmd("autocmd Filetype go setlocal tabstop=4")
-vim.notify = require('notify')
 
+local status, notify = pcall(require, "notify")
+if not status then
+	return
+end
+vim.notify = notify
 
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -35,15 +39,4 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
-]]
-
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
-
--- vim.cmd([[
---   nnoremap <silent><TAB> :BufferLineCycleNext<CR>
---   nnoremap <silent><S-TAB> :BufferLineCyclePrev<CR>
--- ]])
+]])

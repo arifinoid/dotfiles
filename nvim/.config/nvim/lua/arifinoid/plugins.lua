@@ -82,10 +82,10 @@ return {
 			end, { expr = true })
 		end,
 	},
-	{
-		"melbaldove/llm.nvim",
-		dependencies = { "nvim-neotest/nvim-nio" },
-	},
+	-- {
+	-- 	"melbaldove/llm.nvim",
+	-- 	dependencies = { "nvim-neotest/nvim-nio" },
+	-- },
 
 	-- debugging
 	{ "folke/neodev.nvim", opts = {} },
@@ -135,7 +135,11 @@ return {
 		},
 	},
 
-	{ "romgrk/barbar.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
+	{
+		"romgrk/barbar.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		commit = "31b6951c53a59bccfa91bf3984ed1510a940c836",
+	},
 	"nvim-tree/nvim-tree.lua",
 
 	{ "lukas-reineke/indent-blankline.nvim", event = "BufEnter", commit = "3d08501caef2329aba5121b753e903904088f7e6" },
@@ -208,7 +212,6 @@ return {
 			"rcarriga/nvim-notify",
 		},
 	},
-
 	"goolord/alpha-nvim",
 	"rcarriga/nvim-notify",
 	{ "folke/which-key.nvim", commit = "af4ded85542d40e190014c732fa051bdbf88be3d" },
@@ -269,16 +272,26 @@ return {
 		build = ":TSUpdate html",
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim", -- required by telescope
+			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
-
-			-- optional
-			"nvim-treesitter/nvim-treesitter",
-			"rcarriga/nvim-notify",
-			"nvim-tree/nvim-web-devicons",
 		},
+		opts = {},
+	},
+	{
+		"vyfor/cord.nvim",
+		build = "./build || .\\build",
+		event = "VeryLazy",
 		opts = {
-			-- configuration goes here
+			editor = {
+				image = "1307380839239258134",
+				client = "neovim",
+				tooltip = "The Superior Text Editor",
+			},
+			display = {
+				show_time = true,
+				show_repository = true,
+				show_cursor_position = false,
+			},
 		},
 	},
 }
